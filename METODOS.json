@@ -1,0 +1,11 @@
+# Create Username
+curl -X POST http://localhost:5005/api/auth/signup -H 'Content-Type: application/json' -d '{"username":"UlisesM","password":"Prueba123"}'
+
+# Login
+curl -X POST http://localhost:5005/api/auth/login -H 'Content-Type: application/json' -d '{"username":"UlisesM","password":"Prueba123"}'
+
+# Session
+curl -X GET http://localhost:5005/api/auth/session -H 'Content-Type: application/json' -d '{"username":"UlisesM","password":"Prueba123"}'
+
+# Logout
+curl -X DELETE http://localhost:5005/api/auth/logout -H 'Content-Type: application/json' -d '{"username":"UlisesM","password":"Prueba123"}'
