@@ -7,10 +7,10 @@ const { clearRes } = require('../utils/utils');
 exports.verifyToken = (req,res,next)=>{
     const {headload,signature} = req.cookies
 
-    if(!headload||!signature) return res.status(401).json({errorMessage:'No estas autorizado1'});
+    if(!headload || !signature) return res.status(401).json({errorMessage:'No estas autorizado1'});
 
     //jwt.verify(jwt,ELSECRETO,(error,decoded)=>{})
-    jwt.verify(`${headload}.${signature}`,process.env.SECRET,(error,decoded=>{
+    jwt.verify(`${headload}.${signature}`,process.env.SECRET,(error,decoded)=>{
         if(error){
             return res.status(401).json({errorMessage:'No estas autorizado2'});
         }
@@ -22,14 +22,14 @@ exports.verifyToken = (req,res,next)=>{
         .catch(error=>{
             res.status(401).json({errorMessage:'Naranjas'});
         })
-    }))
+    })
 
 }
 
 exports.checkRole = (arrayRoles) => {
     return(req,res,next)=>{
         const{role}=req.user
-        if(arrayROles.includes(role)){
+        if(arrayRoles.includes(role)){
             next()
         }else{
             res.status(401).json({errorMessage:'No tiene permisos para realizar esta accion'});
